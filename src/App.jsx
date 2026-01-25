@@ -1,5 +1,14 @@
 const App = () => {
-  return <h1>React-Redux-Cart</h1>
-}
+  return (
+    <div>
+      <header>
+        <div>Logo</div>
+        <div>Cart</div>
+      </header>
+      <div>Cart Actions</div>
+      <div>Items</div>
+    </div>
+  );
+};
 
-export default App
+export default App;
