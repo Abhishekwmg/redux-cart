@@ -1,14 +1,8 @@
-const App = () => {
+import Header from "./Header";
+export default function App() {
   return (
     <div>
-      <header>
-        <div>Logo</div>
-        <div>Cart</div>
-      </header>
-      <div>Cart Actions</div>
-      <div>Items</div>
+      <Header />
     </div>
   );
-};
-
-export default App;
+}
