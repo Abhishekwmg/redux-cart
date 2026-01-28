@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const cartItems = [
+const initialCartItems = [
   {
     id: 1,
     title: "iPhone 18 Pro Max",
@@ -18,21 +18,30 @@ const cartItems = [
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    items: cartItems,
+    items: initialCartItems,
     quantity: 0,
     cartItems: [],
   },
   reducers: {
     addItem: (state, action) => {
-      const existingCartItem = state.cartItems.find(
-        (cart) => cart.id !== action.payload,
-      );
-      if (!existingCartItem) {
-        state.cartItems.push(action.payload);
+      const item = state.cartItems.find((item) => {
+        item.id === action.payload.id;
+      });
+
+      if (item) {
+        item.quantity++;
+      } else {
+        state.cartItems.push({
+          ...action.payload,
+          quantity: 1,
+        });
       }
     },
     removeItem: (state, action) => {
-      //removal of the item
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== action.payload.id,
+      );
+      state.quantity--;
     },
   },
 });

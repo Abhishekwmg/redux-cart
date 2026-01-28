@@ -11,12 +11,10 @@ export default function Items() {
       {cartItems.map((item) => {
         return (
           <li key={item.id}>
-            <div>
-              <p>{item.title}</p>
-              <p>{item.price}</p>
-              <p>{item.description}</p>
-              <button onClick={() => dispatch(addItem(item))}>Add</button>
-            </div>
+            <p>{item.title}</p>
+            <p>{item.price}</p>
+            <p>{item.description}</p>
+            <button onClick={() => dispatch(addItem(item))}>Add</button>
           </li>
         );
       })}

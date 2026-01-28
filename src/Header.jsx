@@ -1,8 +1,10 @@
 import { ShoppingCart } from "lucide-react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { removeItem } from "./store/cartSlice";
 
 export default function Header() {
+  const dispatch = useDispatch();
   const cartQuantity = useSelector((state) => state.cart.quantity);
   const cartItem = useSelector((state) => state.cart.cartItems);
 
@@ -22,13 +24,15 @@ export default function Header() {
         <div style={{ background: "green" }}>
           {cartItem.map((cart) => {
             return (
-              <>
+              <div key={cart.id}>
                 <p>{cart.title}</p>
                 <p>{cart.price}</p>
                 <p>{}</p>
                 <button>+</button>
-                <button>-</button>
-              </>
+                <button onClick={() => dispatch(removeItem(cartItem.id))}>
+                  -
+                </button>
+              </div>
             );
           })}
         </div>
