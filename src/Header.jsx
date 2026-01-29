@@ -21,7 +21,7 @@ export default function Header() {
         <span>{cartQuantity}</span>
       </button>
       {showCart && (
-        <div style={{ background: "green" }}>
+        <div style={{ background: "limegreen" }}>
           {cartItem.map((cart) => {
             return (
               <div key={cart.id}>
